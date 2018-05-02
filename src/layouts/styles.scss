@@ -1,0 +1,454 @@
+@import url('https://rsms.me/inter/inter-ui.css');
+
+// @import '~tachyons-sass/tachyons.scss';
+// @import 'variables';
+
+@import 'tachyons.scss';
+
+// if width <= 640 then
+//     Phone
+//   else if width <= 1000 then
+//     Tablet
+//   else if width <= 1200 then
+//     Desktop
+//   else
+// 		WideDesktop
+
+$Phone: "(max-width: 640px)";
+$Tablet: "(min-width: 641px) and (max-width: 1000px)";
+$Desktop: "(min-width: 1001px) and (max-width: 1200px)";
+$WideDesktop: "(min-width: 1201px)";
+
+// TODO: move my custom shit to normalize
+// TODO: move my breakpoints to tachyons breakpoints
+// TODO: move my a, a:hover -styles to skins-pseudo
+
+* {
+	font-family: 'Inter UI';
+  line-height: 1.618;
+  box-sizing: border-box !important;
+}
+
+.page {
+  min-height: 100vh;
+
+  @media #{$WideDesktop} {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 64px auto minmax(min-content, max-content);
+    grid-template-areas:
+      "header"
+      "content"
+      "footer";
+  }
+}
+
+.content {
+  display: grid;
+  grid-area: content;
+  @extend .overflow-y-scroll;
+
+  @media #{$Phone} {
+    padding-left: $spacing-medium;
+    padding-right: $spacing-medium;
+  }
+
+  $side-w: minmax(240px, 320px);
+  $main-w: minmax(480px, 640px);
+
+	@media #{$Phone} {
+    grid-row-gap: $height-2;
+		grid-template-columns: auto;
+		grid-template-rows: auto auto auto;
+		grid-template-areas:
+      "main"
+      "sidebar"
+      "aside";
+	}
+
+	@media #{$Tablet} {
+    grid-row-gap: $height-2;
+		grid-template-columns: 1fr $main-w 1fr;
+		grid-template-rows: auto auto auto;
+		grid-template-areas:
+    ". main ."
+    ". sidebar ."
+    ". aside .";
+	}
+
+	@media #{$Desktop} {
+    grid-row-gap: $height-3;
+    grid-column-gap: $width-3;
+		grid-template-columns: 1fr $main-w 1fr;
+		grid-template-rows: auto auto auto;
+		grid-template-areas:
+		". main ."
+    ". sidebar ."
+    ". aside .";
+	}
+
+	@media #{$WideDesktop} {
+    grid-row-gap: $height-3;
+    grid-column-gap: $width-3;
+		grid-template-columns: 1fr $side-w $main-w $side-w 1fr;
+		grid-template-rows: auto;
+		grid-template-areas:
+			". sidebar main aside .";
+	}
+}
+
+header {
+  grid-area: header;
+
+  position: sticky;
+  top: 0;
+  @media #{$Phone} {
+    position: relative;
+  }
+
+  @extend .h3;
+
+  #evil-squares-logo {
+    position: absolute;
+    top: -28px;
+    left: -28px;
+    width: 72px;
+    height: 72px;
+    transform: rotate(28deg);
+
+    &::before {
+      content: ' ';
+      position: absolute;
+      top: 36.25px;
+      left: 57px;
+      width: 20.5px;
+      height: 20.5px;
+      transform: rotate(39deg);
+      position: absolute;
+    }
+
+    &::after {
+      content: ' ';
+      position: absolute;
+      top: 16.5px;
+      left: 64.5px;
+      width: 5px;
+      height: 5px;
+      transform: rotate(20deg);
+      position: absolute;
+    }
+  }
+
+  &.Light {
+    background: linear-gradient(to bottom, $near-white 0%, $transparent 100%);
+
+    #evil-squares-logo {
+      background-color: $dark-grey;
+      &::before {
+        background-color: $near-white;
+      }
+      &::after {
+        background-color: $near-white;
+      }
+    }
+  }
+  &.Dark {
+    background: linear-gradient(to bottom, $near-black 0%, $transparent 100%);
+
+    #evil-squares-logo {
+      background-color: $near-white;
+      &::before {
+        background-color: $near-black;
+      }
+      &::after {
+        background-color: $near-black;
+      }
+    }
+  }
+
+}
+
+main {
+  grid-area: main;
+
+  @extend .flex;
+  @extend .flex-column;
+  @extend .justify-center;
+}
+
+sidebar {
+  grid-area: sidebar;
+  display: grid;
+
+  @media #{$Phone} {
+    grid: auto auto / auto;
+  }
+  @media #{$Tablet} {
+    grid-column-gap: $width-2;
+    grid: auto / 1fr 1fr;
+  }
+  @media #{$Desktop} {
+    grid-column-gap: $width-3;
+    grid: auto / 1fr 1fr;
+  }
+  @media #{$WideDesktop} {
+    grid: auto / auto;
+    align-content: center;
+  }
+}
+
+aside {
+  grid-area: aside;
+  display: grid;
+
+  @extend .mb4-ns;
+
+  @media #{$Phone} {
+    grid: auto auto / auto;
+  }
+  @media #{$Tablet} {
+    grid-column-gap: $width-2;
+    grid: auto / 1fr 1fr;
+  }
+  @media #{$Desktop} {
+    grid-column-gap: $width-3;
+    grid: auto / 1fr 1fr;
+  }
+  @media #{$WideDesktop} {
+    grid: auto / auto;
+    align-content: center;
+  }
+}
+
+footer {
+  grid-area: footer;
+  position: relative;
+
+  @extend .flex;
+  @extend .items-center;
+  @extend .justify-center;
+  @extend .pa3;
+  @extend .bt;
+
+  &.Light {
+    @extend .b--moon-grey;
+  }
+  &.Dark {
+    @extend .b--mid-grey;
+  }
+
+  &.Blank {
+
+  }
+
+  &.Wireframe {
+
+  }
+}
+
+@import 'footer.scss';
+
+// default styles
+
+
+address {
+  @extend .fs-normal;
+}
+
+a {
+  @extend .color-inherit;
+  @extend .no-underline;
+}
+
+ul {
+  @extend .list-disc;
+  @extend .pl3;
+
+  li {
+    @extend .mb2;
+  }
+}
+
+label {
+  @extend .i;
+  @extend .f6;
+}
+
+input {
+  @extend .ph3;
+  @extend .pv2;
+  @extend .bn;
+  @extend .outline-0;
+
+  &[type='password'] {
+    @extend .br2;
+    @extend .br--left;
+  }
+  &[type='submit'] {
+    @extend .br2;
+    @extend .br--right;
+  }
+}
+
+h1, h2 {
+  @extend .bb;
+}
+
+
+// themes
+
+.Light {
+  @extend .bg-near-white;
+  @extend .near-black;
+
+  &.Blank {
+    h1, h2, p, a, span, label {
+      @extend .bg-moon-grey;
+    }
+  }
+  h1, h2 {
+    @extend .b--moon-grey;
+  }
+  li, label {
+    @extend .grey;
+  }
+  a {
+    @extend .near-black;
+    border-bottom: 1px solid $moon-grey;
+    box-shadow: inset 0 -2px 0px 0px $moon-grey;
+    &:hover {
+      background: $moon-grey;
+    }
+  }
+  input {
+    @extend .bg-white;
+    @extend .black;
+    &[type='submit'] {
+      @extend .bg-light-grey;
+    }
+  }
+  footer {
+    a {
+      @extend .bg-white;
+    }
+  }
+}
+.Dark {
+  @extend .bg-near-black;
+  @extend .near-white;
+
+  &.Blank {
+    h1, h2, p, a, span, label {
+      @extend .bg-grey;
+    }
+  }
+  h1, h2 {
+    @extend .b--mid-grey;
+  }
+  li, label {
+    @extend .moon-grey;
+  }
+  a {
+    @extend .near-white;
+    border-bottom: 1px solid $mid-grey;
+    box-shadow: inset 0 -2px 0px 0px $mid-grey;
+    &:hover {
+      background: $mid-grey;
+    }
+  }
+  input {
+    @extend .bg-black;
+    @extend .white;
+    &[type='submit'] {
+      @extend .bg-dark-grey;
+    }
+  }
+  footer {
+    a {
+      @extend .bg-black;
+    }
+  }
+}
+
+.Blank {
+  h1, h2, p, a, span, label {
+    color: $transparent;
+    @extend .dib;
+  }
+  input, button {
+    @extend .dn;
+  }
+}
+
+// wireframe
+
+.Wireframe {
+  header, main, sidebar, aside, footer, article, section, h1, h2, p, ul, li, label {
+    color: $transparent;
+    @extend .outline;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      @extend .f6;
+      @extend .code;
+    }
+  }
+
+  header::before { content: '<header>'; }
+  main::before { content: '<main>'; }
+  sidebar::before { content: '<sidebar>'; }
+  aside::before { content: '<aside>'; }
+  footer::before { content: '<footer>'; }
+  h1::before { content: '<h1>'; }
+  h2::before { content: '<h2>'; }
+  p::before { content: '<p>'; }
+  li::before { content: '<li>'; }
+
+  a {
+    color: $transparent;
+  }
+  input, button {
+    @extend .dn;
+  }
+}
+
+.Light.Wireframe {
+  header, main, sidebar, aside, footer, h1, h2, p, ul, li {
+    outline-color: $moon-grey;
+    &::before {
+      @extend .black;
+    }
+  }
+  header, footer, h1, h2, p, li {
+    @extend .bg-white;
+  }
+}
+
+.Dark.Wireframe {
+  header, main, sidebar, aside, footer, h1, h2, p, ul, li {
+    outline-color: $mid-grey;
+    &::before {
+      @extend .white;
+    }
+  }
+  header, footer, h1, h2, p, li {
+    @extend .bg-black;
+  }
+}
+
+/* 
+@media #{$Phone} {
+    
+}
+@media #{$Tablet} {
+  
+}
+@media #{$Desktop} {
+  
+}
+@media #{$WideDesktop} {
+  
+} */

@@ -1,0 +1,49 @@
+.dropup-button {
+  @extend .dib;
+  @extend .f6;
+  @extend .link;
+  @extend .code;
+  @extend .br2;
+  @extend .ph3;
+  @extend .pv2;
+  @extend .mh2;
+}
+
+.dropup-option {
+  @extend .db;
+  @extend .f6;
+  @extend .link;
+  @extend .code;
+  @extend .br2;
+  @extend .ph3;
+  @extend .pv2;
+  @extend .ma2;
+
+  &.true {
+    @extend .bg-blue;
+    @extend .white;
+    &:hover {
+      @extend .bg-blue;
+      @extend .white;
+    }
+  }
+}
+
+.dropup {
+  position: relative;
+  @extend .dib;
+}
+
+.dropup-content {
+  @extend .dn;
+  position: absolute;
+  bottom: 39px;
+  left: 0;
+  right: 0;
+  @extend .bg-silver;
+  @extend .br2;
+}
+
+.dropup:hover .dropup-content {
+  @extend .db;
+}
