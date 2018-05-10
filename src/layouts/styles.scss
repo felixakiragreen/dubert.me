@@ -141,7 +141,7 @@ header {
   }
 
   &.Light {
-    background: linear-gradient(to bottom, $near-white 0%, $transparent 100%);
+    background: linear-gradient(to bottom, $near-white 0%, $white-0125 100%);
 
     #evil-squares-logo {
       background-color: $dark-grey;
@@ -154,7 +154,7 @@ header {
     }
   }
   &.Dark {
-    background: linear-gradient(to bottom, $near-black 0%, $transparent 100%);
+    background: linear-gradient(to bottom, $near-black 0%, $black-0125 100%);
 
     #evil-squares-logo {
       background-color: $near-white;
