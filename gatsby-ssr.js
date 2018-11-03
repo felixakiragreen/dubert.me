@@ -10,9 +10,11 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server'
 import createStore from './src/state/createStore'
-require("dotenv").config();
+import dotenv from 'dotenv'
+dotenv.config()
+// require('dotenv').config()
 
-exports.replaceRenderer = ({
+export const replaceRenderer = ({
   bodyComponent,
   replaceBodyHTMLString,
   setHeadComponents,
