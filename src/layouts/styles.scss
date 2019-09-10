@@ -55,7 +55,7 @@ $WideDesktop: "(min-width: 1201px)";
   }
 
   $side-w: minmax(240px, 320px);
-  $main-w: minmax(480px, 640px);
+  $main-w: minmax(480px, 720px);
 
 	@media #{$Phone} {
     grid-row-gap: $height-2;

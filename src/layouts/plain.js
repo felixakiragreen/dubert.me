@@ -4,18 +4,16 @@ import { connect } from 'react-redux'
 import Sidebar from '../components/sidebar'
 import Aside from '../components/aside'
 
-
 class Plain extends React.Component {
-
   render() {
     const { location, children, data, uiState, uiTheme } = this.props
 
     return (
       <div className={`content plain ${uiState} ${uiTheme}`}>
         {children}
-        <Sidebar
+        {/* <Sidebar
           siteDescription={data.site.siteMetadata.description}
-        />
+        /> */}
       </div>
     )
   }
@@ -26,7 +24,7 @@ export default connect(
     uiState: state.app.uiState,
     uiTheme: state.app.uiTheme,
   }),
-  dispatch => ({}),
+  dispatch => ({})
 )(Plain)
 
 /* export const query = graphql`

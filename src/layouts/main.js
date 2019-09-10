@@ -4,19 +4,17 @@ import { connect } from 'react-redux'
 import Sidebar from '../components/sidebar'
 import Aside from '../components/aside'
 
-
 class Main extends React.Component {
-
   render() {
     const { location, children, data, uiState, uiTheme } = this.props
 
     return (
       <div className={`content ${uiState} ${uiTheme}`}>
         {children}
-        <Aside />
-        <Sidebar
+        {/* <Aside /> */}
+        {/* <Sidebar
           siteDescription={data.site.siteMetadata.description}
-        />
+        /> */}
       </div>
     )
   }
@@ -27,7 +25,7 @@ export default connect(
     uiState: state.app.uiState,
     uiTheme: state.app.uiTheme,
   }),
-  dispatch => ({}),
+  dispatch => ({})
 )(Main)
 
 /* export const query = graphql`

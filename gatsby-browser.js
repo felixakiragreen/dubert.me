@@ -4,15 +4,15 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
- // You can delete this file if you're not using it
+// You can delete this file if you're not using it
 
- /* globals window */
+/* globals window */
 
-import React from 'react'
-import { Router } from 'react-router-dom'
-import { Provider } from 'react-redux'
+const React = require('react')
+const { Router } = require('react-router-dom')
+const { Provider } = require('react-redux')
 
-import createStore from './src/state/createStore'
+const createStore = require('./src/state/createStore')
 
 exports.replaceRouterComponent = ({ history }) => {
   const store = createStore()

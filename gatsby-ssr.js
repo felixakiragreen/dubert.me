@@ -4,13 +4,13 @@
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 
- // You can delete this file if you're not using it
+// You can delete this file if you're not using it
 
-import React from 'react'
-import { Provider } from 'react-redux'
-import { renderToString } from 'react-dom/server'
-import createStore from './src/state/createStore'
-require("dotenv").config();
+const React = require('react')
+const { Provider } = require('react-redux')
+const { renderToString } = require('react-dom/server')
+const createStore = require('./src/state/createStore')
+require('dotenv').config()
 
 exports.replaceRenderer = ({
   bodyComponent,
@@ -20,11 +20,7 @@ exports.replaceRenderer = ({
   const store = createStore()
 
   // Connect Redux store
-  const ConnectedBody = () => (
-    <Provider store={store}>{bodyComponent}</Provider>
-  )
+  const ConnectedBody = () => <Provider store={store}>{bodyComponent}</Provider>
 
-  replaceBodyHTMLString(
-    renderToString(<ConnectedBody />)
-  )
+  replaceBodyHTMLString(renderToString(<ConnectedBody />))
 }

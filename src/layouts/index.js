@@ -2,9 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 
-import {
-  setUIState as setUIStateAction,
-} from '../state/app'
+import { setUIState as setUIStateAction } from '../state/app'
 
 import Main from './main'
 // import Portfolio from './portfolio'
@@ -17,7 +15,6 @@ import Footer from '../components/footer'
 import './styles.scss'
 
 class Layout extends React.Component {
-
   componentDidMount() {
     setTimeout(() => {
       this.props.setUIState('Ideal')
@@ -33,18 +30,15 @@ class Layout extends React.Component {
           <Helmet
             title={data.site.siteMetadata.title}
             meta={[
-              { name: 'description', content: data.site.siteMetadata.description },
+              {
+                name: 'description',
+                content: data.site.siteMetadata.description,
+              },
               { name: 'keywords', content: data.site.siteMetadata.keywords },
             ]}
           />
-          <Header
-            siteTitle={data.site.siteMetadata.title}
-            location={{}}
-          />
-          <Main data={data}>
-            {children()}
-          </Main>
-          <Footer />
+          <Header siteTitle={data.site.siteMetadata.title} location={{}} />
+          <Main data={data}>{children()}</Main>
         </div>
       )
     }
@@ -76,17 +70,15 @@ class Layout extends React.Component {
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
-            { name: 'description', content: data.site.siteMetadata.description },
+            {
+              name: 'description',
+              content: data.site.siteMetadata.description,
+            },
             { name: 'keywords', content: data.site.siteMetadata.keywords },
           ]}
         />
-        <Header
-          siteTitle={data.site.siteMetadata.title}
-          location={{}}
-        />
-        <Plain data={data}>
-          {children()}
-        </Plain>
+        <Header siteTitle={data.site.siteMetadata.title} location={{}} />
+        <Plain data={data}>{children()}</Plain>
         <Footer />
       </div>
     )
@@ -100,7 +92,7 @@ export default connect(
   }),
   dispatch => ({
     setUIState: uiState => dispatch(setUIStateAction(uiState)),
-  }),
+  })
 )(Layout)
 
 export const query = graphql`
