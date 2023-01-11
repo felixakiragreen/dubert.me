@@ -9,7 +9,7 @@
     "gatsby-plugin-react-helmet": "^2.0.10",
     "gatsby-plugin-sass": "^1.0.26",
     "gatsby-source-filesystem": "^1.5.33",
-    "gatsby-transformer-remark": "^1.7.40",
+    "gatsby-transformer-remark": "^5.25.1",
     "react-helmet": "^5.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.1.1",
